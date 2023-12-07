@@ -1,15 +1,17 @@
 const express = require('express')
 const cors = require('cors');
 const bodyParser = require('body-parser')
+const router = express.Router()
 
 const port = 3000
 
 const app = express();
 app.use(bodyParser.text())
 app.use(cors())
+app.use(router)
 
 
-app.post('/home', async (req, res) => {
+router.post('/home', async (req, res) => {
     let apiKey = req.headers.authorization.toString()
     let url = req.body
     let data = await fetch(url, {
