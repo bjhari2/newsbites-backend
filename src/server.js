@@ -12,12 +12,10 @@ app.use(cors())
 app.post('/home', async (req, res) => {
     let apiKey = req.headers.authorization.toString()
     let url = req.body
-    console.log(apiKey)
-    console.log(url)
     let data = await fetch(url, {
         method: 'get',
         headers: {
-            authorization: apiKey
+            authorization: process.env.API_KEY
         }
     })
     let json = await data.json()
